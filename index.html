@@ -12,21 +12,41 @@
         <div class="score">
           <h1>Jogador</h1>
           <div class="life-bar">
-            <div class="life"></div>
+            <div
+              class="life"
+              :style="{ width: playerLife + '%' }"
+              :class="{ atention: playerLife < 50, danger: playerLife < 15 }"
+            ></div>
           </div>
           <div>{{ playerLife }}%</div>
         </div>
-        
+
         <div class="score">
-          <h1>Jogador</h1>
+          <h1>Monstro</h1>
           <div class="life-bar">
-            <div class="life"></div>
+            <div
+              class="life"
+              :style="{ width: monsterLife + '%' }"
+              :class="{ atention: monsterLife < 50, danger: monsterLife < 15 }"
+            ></div>
           </div>
-          <div>{{ playerLife }}%</div>
+          <div>{{ monsterLife }}%</div>
         </div>
       </div>
-      <div class="panel result">2</div>
-      <div class="panel buttons">3</div>
+      <div v-if="hasResult" class="panel result">
+        <div :class="{win: playerLife !== 0, lose: playerLife == 0 }">
+          {{ playerLife !== 0 ? 'Você ganhou!!!' : 'Você perdeu!!!' }}
+        </div>
+      </div>
+      <div class="panel buttons">
+        <button v-if="!running" class="btn new-game">INICIAR JOGO</button>
+        <template v-else>
+          <button class="btn attack">ATAQUE</button>
+          <button class="btn especial-attack">ATAQUE ESPECIAL</button>
+          <button class="btn heal">CURAR</button>
+          <button class="btn give-up">DESISTIR</button>
+        </template>
+      </div>
       <div class="panel logs">4</div>
     </div>
     <script src="./app.js"></script>
