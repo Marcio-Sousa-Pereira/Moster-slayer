@@ -108,3 +108,33 @@ html {
   background-color: #bbb;
   color: #000;
 }
+
+/* Area dos logs*/
+
+.logs ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.logs ul li {
+  display: flex;
+  justify-content: center;
+  margin: 4px 0;
+  padding: 3px 0;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+
+.player {
+  background-color: #4253afaa;
+  color: #fff;
+}
+
+.monster {
+  background-color: #e51c23aa;
+  color: #fff;
+}

@@ -39,15 +39,21 @@
         </div>
       </div>
       <div class="panel buttons">
-        <button v-if="!running" class="btn new-game">INICIAR JOGO</button>
+        <button v-if="!running" class="btn new-game" @click="startGame">INICIAR JOGO</button>
         <template v-else>
-          <button class="btn attack">ATAQUE</button>
-          <button class="btn especial-attack">ATAQUE ESPECIAL</button>
-          <button class="btn heal">CURAR</button>
-          <button class="btn give-up">DESISTIR</button>
+          <button class="btn attack" @click="attack(false)">ATAQUE</button>
+          <button class="btn especial-attack" @click="attack(false)">ATAQUE ESPECIAL</button>
+          <button class="btn heal" @click="healAndHurt">CURAR</button>
+          <button class="btn give-up" @click="running = false">DESISTIR</button>
         </template>
       </div>
-      <div class="panel logs">4</div>
+      <div v-if="logs.length && running" class="panel logs">
+        <ul>
+          <li v-for="log in logs" :class="log.cls">
+            {{ log.text }}
+          </li>
+        </ul>
+      </div>
     </div>
     <script src="./app.js"></script>
   </body>
